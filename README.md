@@ -1,5 +1,7 @@
 ![ZparkIO_Animated](https://raw.githubusercontent.com/leobenkel/zparkio.g8/main/assets/ZparkIO_animated.gif)
 
+[![Build Status](https://travis-ci.com/leobenkel/zparkio.g8.svg?branch=main)](https://travis-ci.com/leobenkel/zparkio.g8)
+
 # A [Giter8][g8] template for [ZparkIO][zparkio]
 
 Gitter8 template for [ZparkIO][zparkio]
