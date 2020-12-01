@@ -16,8 +16,13 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-core" % "$spark_version$" % Provided,
       // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
       "org.apache.spark" %% "spark-sql"    % "$spark_version$"      % Provided,
+      // https://github.com/leobenkel/ZparkIO
       "com.leobenkel"    %% "zparkio"      % "$zparkio_version$",
-      "org.scalatest"    %% "scalatest"    % "$scala_test_version$" % Test,
-      "com.leobenkel"    %% "zparkio-test" % "$zparkio_version$"    % Test
+      $if(zparkio_scallop_support.truthy)$
+      "com.leobenkel"    %% "zparkio-config-scallop" % "$zparkio_version$",
+      $endif$
+      "com.leobenkel"    %% "zparkio-test" % "$zparkio_version$"    % Test,
+      // https://www.scalatest.org/
+      "org.scalatest"    %% "scalatest"    % "$scala_test_version$" % Test
     )
   )

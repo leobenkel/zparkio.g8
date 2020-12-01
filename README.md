@@ -16,5 +16,7 @@ And follow the instructions.
 
 Look at which ZparkIO version are available on [Maven](https://search.maven.org/search?q=g:com.leobenkel%20a:zparkio*) and check out the corresponding supported [Spark versions](https://github.com/leobenkel/ZparkIO/blob/main/sparkVersions).
 
+Version has to be above `0.12.3` to work properly.
+
 [g8]: http://www.foundweekends.org/giter8/
 [zparkio]: http://github.com/leobenkel/ZparkIO
