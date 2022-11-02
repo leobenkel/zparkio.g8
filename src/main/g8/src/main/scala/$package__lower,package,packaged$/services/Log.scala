@@ -2,15 +2,15 @@ package $package;format="space,package"$.services
 
 import com.leobenkel.zparkio.Services.Logger
 import zio.Task
-import zio.console.Console
+import zio.Console
 
-case class Log(console: Console.Service) extends Logger.Service {
+case class Log(console: Console) extends Logger.Service {
   override def info(txt: => String): Task[Unit] =
-    console.putStrLn(s"[INFO] \$txt")
+    console.printLine(s"[INFO] \$txt")
 
   override def error(txt: => String): Task[Unit] =
-    console.putStrLn(s"[ERROR] \$txt")
+    console.printLineError(s"[ERROR] \$txt")
 
   override def debug(txt: => String): Task[Unit] =
-    console.putStrLn(s"[DEBUG] \$txt")
+    console.printLine(s"[DEBUG] \$txt")
 }
