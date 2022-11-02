@@ -12,8 +12,8 @@ import izumi.reflect.Tag
 import zio.{ZIO, ZLayer}
 
 trait Application extends ZparkioApp[Arguments, RuntimeEnv, OutputType] {
-  implicit lazy final override val tagC:   Tag[Arguments] = Tag.tagFromTagMacro
-  implicit lazy final override val tagEnv: Tag[RuntimeEnv] = Tag.tagFromTagMacro
+  implicit lazy final override val tagC:   zio.Tag[Arguments] = zio.Tag(Tag.tagFromTagMacro)
+  implicit lazy final override val tagEnv: zio.Tag[RuntimeEnv] = zio.Tag(Tag.tagFromTagMacro)
 
   // To add new services
   lazy final override protected val env: ZLayer[ZPARKIO_ENV, Throwable, RuntimeEnv] =
