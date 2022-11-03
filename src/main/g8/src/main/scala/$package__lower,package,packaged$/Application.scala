@@ -9,11 +9,11 @@ $if(zparkio_scallop_support.truthy)$
 import com.leobenkel.zparkio.config.scallop.CommandLineArgumentScallop
 $endif$
 import izumi.reflect.Tag
-import zio.{Has, Task, ZIO, ZLayer}
+import zio.{ZIO, ZLayer}
 
 trait Application extends ZparkioApp[Arguments, RuntimeEnv, OutputType] {
-  implicit lazy final override val tagC:   Tag[Arguments] = Tag.tagFromTagMacro
-  implicit lazy final override val tagEnv: Tag[RuntimeEnv] = Tag.tagFromTagMacro
+  implicit lazy final override val tagC:   zio.Tag[Arguments] = zio.Tag(Tag.tagFromTagMacro)
+  implicit lazy final override val tagEnv: zio.Tag[RuntimeEnv] = zio.Tag(Tag.tagFromTagMacro)
 
   // To add new services
   lazy final override protected val env: ZLayer[ZPARKIO_ENV, Throwable, RuntimeEnv] =
@@ -31,7 +31,7 @@ trait Application extends ZparkioApp[Arguments, RuntimeEnv, OutputType] {
       final override protected def handleErrors(
         t: Throwable
       ): ZIO[Logger, Throwable, OutputType] = {
-        Task(())
+        ZIO.succeed(())
       }
     }
   $endif$
@@ -61,7 +61,7 @@ trait Application extends ZparkioApp[Arguments, RuntimeEnv, OutputType] {
 
 object Application {
   // To add new services
-  type RuntimeEnv = Has[Unit]
+  type RuntimeEnv = Unit
   // To change output type
   type OutputType = Unit
 }
