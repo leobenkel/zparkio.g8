@@ -10,3 +10,4 @@ lib_managed/
 project/plugins/project/
 src_managed/
 target/
+.vscode

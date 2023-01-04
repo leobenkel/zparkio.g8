@@ -20,3 +20,12 @@ Version has to be above `0.12.3` to work properly.
 
 [g8]: http://www.foundweekends.org/giter8/
 [zparkio]: http://github.com/leobenkel/ZparkIO
+
+
+## Development
+
+To test giter8 locally:
+
+```
+sbt new file:///path/to/zparkio.g8
+```
