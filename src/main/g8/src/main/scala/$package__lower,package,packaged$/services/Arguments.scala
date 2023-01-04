@@ -6,7 +6,7 @@ $if(zparkio_scallop_support.truthy)$
 import com.leobenkel.zparkio.config.scallop.CommandLineArgumentScallop
 import org.rogach.scallop.ScallopConf
 $endif$
-import zio.{Task, ZIO}
+import zio.ZIO
 
 case class Arguments(input: List[String])
 $if(zparkio_scallop_support.truthy)$
@@ -14,7 +14,7 @@ $if(zparkio_scallop_support.truthy)$
 $else$
     extends CommandLineArguments.Service[Arguments] {
     // check validity of arguments
-    override def checkValidity(): ZIO[Any, Throwable, Arguments] = Task(this)
+    override def checkValidity(): ZIO[Any, Throwable, Arguments] = ZIO.attempt(this)
 
     // display arguments status
     override final lazy val commandsDebug: Seq[String] = Seq.empty
